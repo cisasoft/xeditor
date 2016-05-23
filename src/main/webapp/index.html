@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script src="./js/jquery-1.12.3.js"></script>
+<script src="./ckeditor/ckeditor.js"></script>
+<script type="text/javascript">
+window.onload = function() {
+    var editor = CKEDITOR.replace( 'editor1', { customConfig: '../conf/ckeditor_config.js' });
+    editor.on( 'change', function( evt ) {// getData() returns CKEditor's HTML content.
+        console.log( 'Total bytes: ' + evt.editor.getData().length );
+    });
+};
+</script>
+</head>
+
+<body>
+	<form>
+		<textarea name="editor1" id="editor1" rows="10" cols="80">
+                <span style="color:#000000">默</span><u><span style="color:#FF0000">认</span>编辑</u><s>内容</s>
+        </textarea>
+	</form>
+	<input type="button" value="获取html的内容" onclick="alert(CKEDITOR.instances.editor1.getData());"/>
+</body>
+
+
+</html>
